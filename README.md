@@ -85,34 +85,47 @@
 
 - Descripción
 
- Este método se utiliza para agregar una nueva pestaña a un JTabbedPane. Esta pestaña contendrá un componente que normalmente es un panel o un contenedor
+ Este método se utilizan para establecer los componentes secundarios que se mostrarán en el lado izquierdo y derecho (o superior e inferior en caso de una división vertical) del `JSplitPane`, respectivamente.
 
 - Sintaxis
 
 ```java
-
+splitPane.setLeftComponent(newLeftComponent);
+splitPane.setRightComponent(Righttexfield);
 ```
 
 - Nota
 
-Previamente al usuo de .addTab se debe instanciar tanto JTabbedPane como los componentes que se uniran por medio de .addTab
+La función de estos métodos es dividir el espacio dentro del `JSplitPane` entre los dos componentes secundarios que se establecen. Un componente se mostrará en un lado y el otro componente en el otro lado de la barra divisoria.
 
-//creación de JTabbedPane y componentes para adicionar
+`setLeftComponent(Component)` y `setRightComponent(Component)`
 
-`JTabbedPane tabbedPane = new JTabbedPane();`
+Para entender mejor el contexto del uso se requiere ver un panorama completo  desde el momento de  la creación de los paneles, el split y la asignación de un componente a un lado de la división
 
-`JPanel panel1 = new JPanel();`
-` panel1.add(new JLabel("Contenido de la pestaña 1"));`
+//Creación de paneles
 
-//uso de .addTab para agregar los componentes
+`JPanel leftPanel = new JPanel(); `
 
-`tabbedPane.addTab("Pestaña 1", panel1);`
+`JPanel rightPanel = new JPanel(); `
 
-Los parámetros de este método son los siguientes:
 
-- `Pestaña 1`: Es una cadena de texto que especifica el título de la nueva pestaña. Este título se mostrará en la pestaña misma para que el usuario pueda identificarla.
 
-- `panel1`: Es un objeto Component que representa el contenido que se asociará con esta pestaña.
+//Creación de la división y asignación de los paneles
+
+`JSplitPane splitPane = new JSplitPane(JSplitPane.HORIZONTAL_SPLIT, leftPanel, rightPanel);`
+
+
+
+ // Creación de un componente
+
+`newLeftComponent = new JButton("Nuevo Componente Izquierdo");`
+
+
+//Asignación del componente a un lado en especifico 
+
+` splitPane.setLeftComponent(newLeftComponent);`
+
+
 
 - Ejemplo:coffee:
 
